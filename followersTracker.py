@@ -20,8 +20,7 @@ if response.ok:
         html = response.text
         bs_html = BeautifulSoup(html, features="html.parser")
 
-        scripts = bs_html.select(
-            'script[type="application/ld+json"]')  # Extrae el script que contiene la cantidad de seguidores
+        scripts = bs_html.select('script[type="application/ld+json"]')  # Extrae el script que contiene la cantidad de seguidores
         datos_json = json.loads(scripts[0].text.strip())  # Transforma a json
         mainEntityofPage = datos_json['mainEntityofPage']
         interactionStatistic = mainEntityofPage['interactionStatistic']
